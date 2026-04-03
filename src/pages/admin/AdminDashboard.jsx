@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/layout/Sidebar';
-import { Users, LogOut, Activity, BarChart, DollarSign, Database, Display } from 'lucide-react';
+import { Users, LogOut, Activity, BarChart, DollarSign, Database, Monitor } from 'lucide-react';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <div className="admin-metric-card">
-                <div className="metric-icon bg-blue"><Display size={24}/></div>
+                <div className="metric-icon bg-blue"><Monitor size={24}/></div>
                 <div className="metric-data">
                   <p className="metric-label">Active Sessions</p>
                   <h3>34</h3>
