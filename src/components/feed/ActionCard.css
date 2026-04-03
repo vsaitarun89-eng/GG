@@ -1,0 +1,36 @@
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  transition: transform 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-surface-hover);
+}
+
+.action-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.bg-cyan { background-color: var(--color-cyan); }
+.bg-orange { background-color: var(--color-orange); }
+.bg-green { background-color: var(--color-green); }
+.bg-purple { background-color: var(--color-purple); }
+
+.action-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}

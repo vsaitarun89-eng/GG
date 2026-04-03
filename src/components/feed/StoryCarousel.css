@@ -1,0 +1,76 @@
+.story-container {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.story-container::-webkit-scrollbar {
+  display: none;
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.story-ring {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-full);
+  padding: 3px;
+  background: var(--color-border);
+}
+
+.story-active {
+  background: linear-gradient(45deg, var(--color-primary), #06b6d4);
+}
+
+.story-user {
+  background: transparent;
+  border: 2px dashed var(--color-border);
+  padding: 2px;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--color-bg);
+}
+
+.story-add-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-primary);
+  color: #000;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid var(--color-bg);
+}
+
+.story-username {
+  font-size: 0.75rem;
+  color: var(--color-text);
+  font-weight: 500;
+  max-width: 68px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}

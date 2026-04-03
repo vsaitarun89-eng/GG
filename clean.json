@@ -1,0 +1,49 @@
+[
+  {
+    "filePath": "C:\\Users\\tarun\\Documents\\Grain Grid\\app\\src\\App.jsx",
+    "messages": [
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 2,
+        "message": "'e' is defined but never used.",
+        "line": 22,
+        "column": 12,
+        "nodeType": "Identifier",
+        "messageId": "unusedVar",
+        "endLine": 22,
+        "endColumn": 13
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';\nimport AuthPage from './pages/AuthPage';\nimport HomePage from './pages/HomePage';\nimport AdminDashboard from './pages/admin/AdminDashboard';\nimport OnboardingPage from './pages/OnboardingPage';\nimport ExplorePage from './pages/ExplorePage';\nimport WorkoutPage from './pages/WorkoutPage';\nimport ChallengesPage from './pages/ChallengesPage';\nimport MessagesPage from './pages/MessagesPage';\nimport GymsPage from './pages/GymsPage';\nimport ProfilePage from './pages/ProfilePage';\nimport SettingsPage from './pages/SettingsPage';\nimport ProgressPage from './pages/ProgressPage';\n\nfunction AdminRoute({ children }) {\n  const userStr = localStorage.getItem('gainGridUser');\n  if (!userStr) return <Navigate to=\"/\" />;\n  \n  let user = null;\n  try {\n    user = JSON.parse(userStr);\n  } catch (e) {\n    user = null;\n  }\n  \n  if (!user || user.role !== 'admin') return <Navigate to=\"/home\" />;\n  \n  return children;\n}\n\nfunction PrivateRoute({ children }) {\n  const token = localStorage.getItem('gainGridToken');\n  const userStr = localStorage.getItem('gainGridUser');\n  if (!token || !userStr) return <Navigate to=\"/\" />;\n  \n  const user = JSON.parse(userStr);\n  if (user.onboarding_completed === 0) return <Navigate to=\"/onboarding\" />;\n  \n  return children;\n}\n\nfunction OnboardingRoute({ children }) {\n  const token = localStorage.getItem('gainGridToken');\n  const userStr = localStorage.getItem('gainGridUser');\n  if (!token || !userStr) return <Navigate to=\"/\" />;\n  \n  const user = JSON.parse(userStr);\n  if (user.onboarding_completed === 1) return <Navigate to=\"/home\" />;\n  \n  return children;\n}\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<AuthPage />} />\n        \n        <Route path=\"/home\" element={<PrivateRoute><HomePage /></PrivateRoute>} />\n        <Route path=\"/explore\" element={<PrivateRoute><ExplorePage /></PrivateRoute>} />\n        <Route path=\"/workout\" element={<PrivateRoute><WorkoutPage /></PrivateRoute>} />\n        <Route path=\"/challenges\" element={<PrivateRoute><ChallengesPage /></PrivateRoute>} />\n        <Route path=\"/messages\" element={<PrivateRoute><MessagesPage /></PrivateRoute>} />\n        <Route path=\"/gyms\" element={<PrivateRoute><GymsPage /></PrivateRoute>} />\n        <Route path=\"/progress\" element={<PrivateRoute><ProgressPage /></PrivateRoute>} />\n        <Route path=\"/profile\" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />\n        <Route path=\"/settings\" element={<PrivateRoute><SettingsPage /></PrivateRoute>} />\n\n        <Route path=\"/onboarding\" element={\n          <OnboardingRoute>\n            <OnboardingPage />\n          </OnboardingRoute>\n        } />\n\n        <Route path=\"/admin\" element={\n          <AdminRoute>\n            <AdminDashboard />\n          </AdminRoute>\n        } />\n      </Routes>\n    </BrowserRouter>\n  );\n}\n\nexport default App;\n",
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "C:\\Users\\tarun\\Documents\\Grain Grid\\app\\src\\pages\\ProfilePage.jsx",
+    "messages": [
+      {
+        "ruleId": "react-hooks/purity",
+        "severity": 2,
+        "message": "Error: Cannot call impure function during render\n\n`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).\n\n  75 |           <div className=\"streak-map\">\n  76 |             {/* Generating mock heatmap blocks */}\n> 77 |             {React.useMemo(() => Array.from({ length: 84 }).map(() => Math.floor(Math.random() * 4)), []).map((lvl, i) => (\n     |                                                                                  ^^^^^^^^^^^^^ Cannot call impure function\n  78 |               <div \n  79 |                 key={i} \n  80 |                 className={`streak-block lvl-${lvl}`}",
+        "line": 77,
+        "column": 82,
+        "nodeType": null,
+        "endLine": 77,
+        "endColumn": 95
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "import React from 'react';\nimport MainLayout from '../components/layout/MainLayout';\nimport Button from '../components/ui/Button';\nimport { Settings, Award, Users, Activity, LogOut } from 'lucide-react';\nimport { useNavigate } from 'react-router-dom';\nimport './ProfilePage.css';\n\nexport default function ProfilePage() {\n  const navigate = useNavigate();\n  const user = JSON.parse(localStorage.getItem('gainGridUser') || '{}');\n  \n  const handleLogout = () => {\n    localStorage.removeItem('gainGridToken');\n    localStorage.removeItem('gainGridUser');\n    navigate('/');\n  };\n\n  const getInitial = (name) => name ? name.charAt(0).toUpperCase() : '?';\n\n  return (\n    <MainLayout>\n      <div className=\"profile-container animate-fade-in\">\n        \n        <header className=\"profile-header\">\n          <div className=\"profile-info-section\">\n            <div className=\"profile-avatar-large\">\n              {user.profilePhoto && user.profilePhoto.length > 5 ? (\n                <img src={user.profilePhoto} alt=\"Profile\" />\n              ) : (\n                <span>{getInitial(user.fullName)}</span>\n              )}\n            </div>\n            <div className=\"profile-details\">\n              <h1>{user.fullName || 'Unknown Athlete'}</h1>\n              <span className=\"profile-username\">@{user.username || 'user'}</span>\n              \n              <div className=\"profile-tags\">\n                {user.fitness_level && <span className=\"profile-tag level\">{user.fitness_level}</span>}\n                {user.goal && <span className=\"profile-tag goal\">{user.goal}</span>}\n                {user.role === 'admin' && <span className=\"profile-tag admin\">ADMIN</span>}\n              </div>\n            </div>\n          </div>\n          \n          <div className=\"profile-actions\">\n            <Button variant=\"outline\" className=\"icon-btn\" onClick={() => navigate('/settings')}>\n              <Settings size={18} /> Edit\n            </Button>\n            <Button variant=\"secondary\" className=\"icon-btn\" onClick={handleLogout}>\n              <LogOut size={18} /> Logout\n            </Button>\n          </div>\n        </header>\n\n        <div className=\"profile-stats-grid\">\n          <div className=\"stat-card\">\n            <div className=\"stat-icon\"><Activity size={24}/></div>\n            <div className=\"stat-value\">124</div>\n            <div className=\"stat-label\">Workouts</div>\n          </div>\n          <div className=\"stat-card\">\n            <div className=\"stat-icon\"><Users size={24}/></div>\n            <div className=\"stat-value\">4.2k</div>\n            <div className=\"stat-label\">Followers</div>\n          </div>\n          <div className=\"stat-card\">\n            <div className=\"stat-icon\"><Award size={24}/></div>\n            <div className=\"stat-value\">LVL 8</div>\n            <div className=\"stat-label\">Rank</div>\n          </div>\n        </div>\n\n        <section className=\"profile-section\">\n          <h3>Activity Streak (12 Weeks)</h3>\n          <div className=\"streak-map\">\n            {/* Generating mock heatmap blocks */}\n            {React.useMemo(() => Array.from({ length: 84 }).map(() => Math.floor(Math.random() * 4)), []).map((lvl, i) => (\n              <div \n                key={i} \n                className={`streak-block lvl-${lvl}`}\n                title={`Day ${i+1}`}\n              ></div>\n            ))}\n          </div>\n        </section>\n\n      </div>\n    </MainLayout>\n  );\n}\n",
+    "usedDeprecatedRules": []
+  }
+]
