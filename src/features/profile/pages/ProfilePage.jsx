@@ -1,6 +1,6 @@
 import React from 'react';
-import MainLayout from '../components/layout/MainLayout';
-import Button from '../components/ui/Button';
+import MainLayout from '@/components/layout/MainLayout';
+import Button from '@/components/ui/Button';
 import { Settings, Award, Users, Activity, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProfilePage.css';

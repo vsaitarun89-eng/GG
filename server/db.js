@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 // Connection details configured for StackCP MySQL database
 // The previous "host" was actually the Database Name, and "sdb-90.hosting.stackcp.net" is the host!
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || "sdb-90.hosting.stackcp.net",
+  host: process.env.DB_HOST || "mysql.gb.stackcp.com",
   user: process.env.DB_USER || "GG-5a30",
   password: process.env.DB_PASSWORD || "S@i85t@run",
   database: process.env.DB_NAME || "GGgymcomunity-35313139ad39",

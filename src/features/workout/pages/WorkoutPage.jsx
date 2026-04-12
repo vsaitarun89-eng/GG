@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainLayout from '../components/layout/MainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import { Search, PlayCircle, Clock, Flame } from 'lucide-react';
 import './WorkoutPage.css';
 

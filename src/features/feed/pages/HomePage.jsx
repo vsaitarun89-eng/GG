@@ -1,8 +1,8 @@
 import React from 'react';
-import MainLayout from '../components/layout/MainLayout';
-import StoryCarousel from '../components/feed/StoryCarousel';
-import ActionCard from '../components/feed/ActionCard';
-import Post from '../components/feed/Post';
+import MainLayout from '@/components/layout/MainLayout';
+import StoryCarousel from '@/components/feed/StoryCarousel';
+import ActionCard from '@/components/feed/ActionCard';
+import Post from '@/components/feed/Post';
 import { Activity, Dumbbell, History, Target } from 'lucide-react';
 import './HomePage.css';
 
