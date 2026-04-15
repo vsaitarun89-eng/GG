@@ -1,0 +1,152 @@
+.post-card {
+  margin-bottom: 24px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.post-author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.post-user {
+  margin: 0 0 2px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.meta-dot {
+  margin: 0 6px;
+}
+
+.post-location {
+  display: flex;
+  align-items: center;
+}
+
+.mr-1 {
+  margin-right: 4px;
+}
+
+.post-more-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.post-content {
+  margin-bottom: 16px;
+}
+
+.post-content p {
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.post-stats-banner {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.badge-unlocked {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.bg-purple-dim { background-color: rgba(139, 92, 246, 0.15); }
+.text-purple { color: #a78bfa; }
+
+.bg-orange-dim { background-color: rgba(249, 115, 22, 0.15); }
+.text-orange { color: #fdba74; }
+
+.post-media-container {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.post-media {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.post-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+}
+
+.reaction-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reaction-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.reaction-btn:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
