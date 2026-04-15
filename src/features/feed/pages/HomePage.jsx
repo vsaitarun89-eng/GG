@@ -3,7 +3,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import StoryCarousel from '@/components/feed/StoryCarousel';
 import ActionCard from '@/components/feed/ActionCard';
 import Post from '@/components/feed/Post';
-import { Activity, Dumbbell, History, Target } from 'lucide-react';
+import { Activity, Dumbbell, History, Target, Trophy, Flame } from 'lucide-react';
 import './HomePage.css';
 
 export default function HomePage() {
@@ -51,27 +51,30 @@ export default function HomePage() {
 
         {/* Quick Actions Grid */}
         <section className="feed-section">
-          <div className="quick-actions-grid">
-            <ActionCard 
-              title="Log Workout" 
-              icon={Activity} 
-              colorClass="bg-cyan" 
-            />
-            <ActionCard 
-              title="My PRs" 
-              icon={Dumbbell} 
-              colorClass="bg-orange" 
-            />
-            <ActionCard 
-              title="History" 
-              icon={History} 
-              colorClass="bg-purple" 
-            />
-            <ActionCard 
-              title="Challenges" 
-              icon={Target} 
-              colorClass="bg-green" 
-            />
+          <div className="quick-actions-container">
+            <h4 className="quick-actions-title">QUICK ACTIONS</h4>
+            <div className="quick-actions-grid">
+              <ActionCard 
+                title="Log Workout" 
+                icon={Dumbbell} 
+                colorClass="bg-green" 
+              />
+              <ActionCard 
+                title="My PRs" 
+                icon={Trophy} 
+                colorClass="bg-orange" 
+              />
+              <ActionCard 
+                title="History" 
+                icon={History} 
+                colorClass="bg-blue" 
+              />
+              <ActionCard 
+                title="Challenges" 
+                icon={Flame} 
+                colorClass="bg-purple" 
+              />
+            </div>
           </div>
         </section>
 

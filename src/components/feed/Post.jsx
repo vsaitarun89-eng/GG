@@ -65,23 +65,37 @@ export default function Post({
       </div>
 
       <div className="post-footer">
-        <div className="reaction-grid">
+        <div className="post-reactions-bar">
           <button 
-            className={`reaction-btn ${liked ? 'active' : ''}`}
+            className={`reaction-chip ${liked ? 'active' : ''}`}
             onClick={() => setLiked(!liked)}
+            style={{ '--chip-bg': 'rgba(252,211,77,0.1)', '--chip-border': 'rgba(252,211,77,0.3)', '--chip-color': '#FCD34D' }}
           >
-            <Flame size={18} className={liked ? 'text-primary' : ''} />
-            <span>{liked ? '24' : '23'} FIRE</span>
+            <span>💪</span> <span style={{ color: liked ? 'inherit' : '#9CA3AF' }}>GAINS {liked ? '48' : '47'}</span>
           </button>
-          <button className="reaction-btn">
-            <Dumbbell size={18} />
-            <span>12 GAINS</span>
+          <button className="reaction-chip" style={{ '--chip-bg': 'rgba(239,68,68,0.1)', '--chip-border': 'rgba(239,68,68,0.3)', '--chip-color': '#EF4444' }}>
+            <span>🔥</span> <span style={{ color: '#9CA3AF' }}>FIRE 32</span>
           </button>
-          <button className="reaction-btn">
+          <button className="reaction-chip" style={{ '--chip-bg': 'rgba(250,204,21,0.1)', '--chip-border': 'rgba(250,204,21,0.3)', '--chip-color': '#FACC15' }}>
+            <span>👑</span> <span style={{ color: '#9CA3AF' }}>LEGEND 12</span>
+          </button>
+          <button className="reaction-chip" style={{ '--chip-bg': 'rgba(244,114,182,0.1)', '--chip-border': 'rgba(244,114,182,0.3)', '--chip-color': '#F472B6' }}>
+            <span>🫡</span> <span style={{ color: '#9CA3AF' }}>RESPECT 28</span>
+          </button>
+          <button className="reaction-chip" style={{ '--chip-bg': 'rgba(167,139,250,0.1)', '--chip-border': 'rgba(167,139,250,0.3)', '--chip-color': '#A78BFA' }}>
+            <span>😤</span> <span style={{ color: '#9CA3AF' }}>BEAST 39</span>
+          </button>
+          <button className="reaction-chip" style={{ '--chip-bg': 'rgba(251,191,36,0.1)', '--chip-border': 'rgba(251,191,36,0.3)', '--chip-color': '#FBBF24' }}>
+            <span>🙌</span> <span style={{ color: '#9CA3AF' }}>INSPIRED 22</span>
+          </button>
+        </div>
+
+        <div className="post-footer-actions">
+          <button className="footer-action-btn">
             <MessageCircle size={18} />
             <span>Comments</span>
           </button>
-          <button className="reaction-btn">
+          <button className="footer-action-btn">
             <Share2 size={18} />
             <span>Share</span>
           </button>

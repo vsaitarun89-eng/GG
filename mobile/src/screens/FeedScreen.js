@@ -64,33 +64,35 @@ export default function FeedScreen() {
 
       {/* Quick Actions */}
       <View style={styles.quickActionsContainer}>
-        <Text style={styles.sectionLabel}>QUICK ACTIONS</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.quickActionsGrid}>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#064E3B' }]}>
-            <Dumbbell color="#22C55E" size={24} />
-            <Text style={[styles.actionCardText, { color: '#22C55E' }]}>LOG WORKOUT</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#451A03' }]}>
-            <Trophy color="#F97316" size={24} />
-            <Text style={[styles.actionCardText, { color: '#F97316' }]}>MY PRs</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#1E3A8A' }]}>
-            <History color="#3B82F6" size={24} />
-            <Text style={[styles.actionCardText, { color: '#3B82F6' }]}>HISTORY</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#3B0764' }]}>
-            <Target color="#A855F7" size={24} />
-            <Text style={[styles.actionCardText, { color: '#A855F7' }]}>CHALLENGES</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#4C1D95' }]} onPress={() => Linking.openURL('https://gaingrid.figma.site/planner')}>
-            <Activity color="#D8B4FE" size={24} />
-            <Text style={[styles.actionCardText, { color: '#D8B4FE' }]}>PLANNER</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#0F766E' }]} onPress={() => Linking.openURL('https://gaingrid.figma.site/dashboard')}>
-            <TrendingUp color="#5EEAD4" size={24} />
-            <Text style={[styles.actionCardText, { color: '#5EEAD4' }]}>PROGRESS</Text>
-          </TouchableOpacity>
-        </ScrollView>
+        <View style={styles.quickActionsBox}>
+          <Text style={styles.sectionLabel}>QUICK ACTIONS</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.quickActionsGrid}>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(34,197,94,0.05)', borderColor: 'rgba(34,197,94,0.2)' }]}>
+              <Dumbbell color="#22C55E" size={24} />
+              <Text style={[styles.actionCardText, { color: '#22C55E' }]}>LOG WORKOUT</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(249,115,22,0.05)', borderColor: 'rgba(249,115,22,0.2)' }]}>
+              <Trophy color="#F97316" size={24} />
+              <Text style={[styles.actionCardText, { color: '#F97316' }]}>MY PRs</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(59,130,246,0.05)', borderColor: 'rgba(59,130,246,0.2)' }]}>
+              <History color="#3B82F6" size={24} />
+              <Text style={[styles.actionCardText, { color: '#3B82F6' }]}>HISTORY</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(168,85,247,0.05)', borderColor: 'rgba(168,85,247,0.2)' }]}>
+              <Target color="#A855F7" size={24} />
+              <Text style={[styles.actionCardText, { color: '#A855F7' }]}>CHALLENGES</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(216,180,254,0.05)', borderColor: 'rgba(216,180,254,0.2)' }]} onPress={() => Linking.openURL('https://gaingrid.figma.site/planner')}>
+              <Activity color="#D8B4FE" size={24} />
+              <Text style={[styles.actionCardText, { color: '#D8B4FE' }]}>PLANNER</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionCard, { backgroundColor: 'rgba(94,234,212,0.05)', borderColor: 'rgba(94,234,212,0.2)' }]} onPress={() => Linking.openURL('https://gaingrid.figma.site/dashboard')}>
+              <TrendingUp color="#5EEAD4" size={24} />
+              <Text style={[styles.actionCardText, { color: '#5EEAD4' }]}>PROGRESS</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
       </View>
 
       {/* Feed Divider */}
@@ -281,29 +283,39 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 24,
   },
+  quickActionsBox: {
+    backgroundColor: '#111827',
+    borderWidth: 1,
+    borderColor: '#1F2937',
+    borderRadius: 12,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
   sectionLabel: {
     color: '#6B7280',
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 'bold',
     letterSpacing: 1,
     marginBottom: 12,
+    paddingHorizontal: 16,
   },
   quickActionsGrid: {
     flexDirection: 'row',
     gap: 12,
-    paddingRight: 16,
+    paddingHorizontal: 16,
   },
   actionCard: {
-    width: 110,
+    width: 105,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 18,
+    paddingVertical: 14,
     borderRadius: 12,
+    borderWidth: 1,
     gap: 8,
   },
   actionCardText: {
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: 'bold',
     letterSpacing: 0.5,
   },
