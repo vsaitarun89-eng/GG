@@ -174,6 +174,8 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+
+
 // --- ADMIN ROUTES ---
 
 // Middleware to protect standard routes
@@ -190,6 +192,61 @@ const requireAuth = (req, res, next) => {
     return res.status(401).json({ error: 'Invalid token' });
   }
 };
+
+// --- USER ROUTES ---
+
+app.get('/api/users/search', requireAuth, async (req, res) => {
+  const query = req.query.q || '';
+  if (!query.trim()) {
+    return res.json({ users: [] });
+  }
+  
+  try {
+    const searchTerm = `%${query.trim()}%`;
+    const [users] = await pool.query(
+      `
+      SELECT id, full_name, username, profile_photo, fitness_level, goal, role 
+      FROM users 
+      WHERE username LIKE ? OR full_name LIKE ?
+      ORDER BY full_name ASC
+      LIMIT 20
+      `,
+      [searchTerm, searchTerm]
+    );
+    res.json({ users: users.map(mapUserProfile) });
+  } catch(error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error during user search.' });
+  }
+});
+
+app.get('/api/users/:username', requireAuth, async (req, res) => {
+  const username = req.params.username;
+  if (!username) {
+    return res.status(400).json({ error: 'Username required' });
+  }
+
+  try {
+    const [users] = await pool.query(
+      `
+      SELECT id, full_name, username, profile_photo, fitness_level, goal, role, gym_location
+      FROM users 
+      WHERE username = ?
+      LIMIT 1
+      `,
+      [username]
+    );
+
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json({ user: mapUserProfile(users[0]) });
+  } catch(error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error fetching user profile.' });
+  }
+});
 
 // --- MESSAGING ROUTES ---
 
